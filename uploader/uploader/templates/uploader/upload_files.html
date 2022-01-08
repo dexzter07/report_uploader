@@ -1,0 +1,120 @@
+{% include 'uploader/messages.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet" />
+    <title>Uploader</title>
+    <style>
+        body{
+            background-color: #a8d9e4;
+            
+    
+        }
+        .mid{
+            margin-top:3%;
+            display: grid;
+            place-items: center;
+            
+        }
+        .box{
+            
+            margin: 20px;
+            padding: 20px;
+            box-shadow: 5px 10px #cccccc;
+            border-radius:10px;
+            background-color:rgba(255, 255, 255, 0.856);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+          }
+          
+          .loader {
+            display: none;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+          }
+          
+          .loading {
+            
+            border: 5px solid #ccc;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border-top-color: #1ecd97;
+            border-left-color: #1ecd97;
+            animation: spin 1s infinite ease-in;
+          }
+          
+          @keyframes spin {
+            0% {
+              transform: rotate(0deg);
+            }
+          
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+    </style>
+</head>
+<body>
+    <h3 class="text-center mt-4" style="color: rgb(48, 85, 90);">Send Reports through SMS</h3>
+
+<div class="container mid">
+    <div class="box">
+        <form action="" method="post">
+            {% csrf_token %}
+            <label>Upload Test Report:</label><br><br>
+            <input type="file" name="upload_files" id="fileUpload" multiple><br><br>
+            <label for="">WhatsApp No.</label><br>
+            <input type="text" name="contact_no" id="contact" placeholder="+91"  maxlength="10" required><br><br>
+            
+            <input type="submit" class="btn btn-dark btn-block" onclick="spinner()" value="send">
+            <div class="loader">
+                <div class="loading">
+                </div>
+              </div>
+        </form>
+    </div>
+    
+</div>
+<script type="text/javascript">
+    function spinner() {
+        alert("WhatsApp will Open Shortly!")
+        var fileUpload = document.getElementById('fileUpload').value;
+        var contact = document.getElementById('contact').value;
+        console.log(fileUpload);
+        console.log(contact);
+        if(fileUpload == ""){
+
+        }
+        else if(contact == ""){
+
+        }
+        else{
+            document.getElementsByClassName("loader")[0].style.display = "block";
+
+        }
+        
+    }
+
+</script> 
+</body>
+</html>
+
+
+
+
+
+
+
